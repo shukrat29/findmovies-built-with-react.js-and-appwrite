@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
 import Search from "./components/Search";
+import MovieCard from "./components/MovieCard";
 
 const API_BASE_URL = "https://api.themoviedb.org/3";
 
@@ -71,13 +72,11 @@ const App = () => {
           ) : errorMessage ? (
             <p>{errorMessage}</p>
           ) : (
-            <ul>
+            <div className="flex flex-wrap gap-4">
               {movieList.map((movie) => (
-                <p key={movie.id} className="text-white">
-                  {movie.title}
-                </p>
+                <MovieCard key={movie.id} movie={movie} />
               ))}
-            </ul>
+            </div>
           )}
         </section>
       </div>
